@@ -8,6 +8,12 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": { url: '/admin/product/getall' },
         "columns": [
+            {
+                "title": "#",
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
             { data: 'title', "width": "25%" },
             { data: 'isbn', "width": "15%" },
             { data: 'listPrice', "width": "10%" },
@@ -25,7 +31,7 @@ function loadDataTable() {
                                 </a>
                             </div>`
                 },
-                "width": "2 5%"
+                "width": "25%"
             }
         ]
     });
